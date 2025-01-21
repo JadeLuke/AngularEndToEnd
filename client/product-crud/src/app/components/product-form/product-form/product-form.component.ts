@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../models/product.model';
 import { ProductService } from '../../../services/product.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product-form',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, CommonModule, FormsModule],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })

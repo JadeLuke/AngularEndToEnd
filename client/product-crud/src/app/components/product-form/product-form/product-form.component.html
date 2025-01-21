@@ -7,22 +7,22 @@
 <form (ngSubmit)="onSubmit()" class="space-y-6">
 <div>
     <label for="name">Name</label>
-    <input type="text" id="name" [(ngModel)]="product.name" name="name" required>
+    <input type="text" id="name" [(ngModel)]="product.name" name="name" required class="mt-1 block w-full rounded-md border-gray-800 shadow-sm p-2 ">
 </div>
 <div>
     <label for="description">Description</label>
-    <textarea id="description" [(ngModel)]="product.description" name="description" required> </textarea>
+    <textarea id="description" [(ngModel)]="product.description" name="description" required class="mt-1 block w-full rounded-md border-gray-800 shadow-sm p-2 "> </textarea>
 </div>
 <div>
     <label for="price">Price</label>
-    <input type="number" id="price" [(ngModel)]="product.price" name="price" required>
+    <input type="number" id="price" [(ngModel)]="product.price" name="price" required class="mt-1 block w-full rounded-md border-gray-800 shadow-sm p-2 ">
 </div>
 
 <div>
-    <button type="button" [routerLink]="['/products']">
+    <button type="button" [routerLink]="['/products']" class="bg-gray-500 text-white px-4 py-2 rounded-lg">
         Cancel
     </button>
-    <button type="submit">{{isEditMode ? 'Update' : 'Create'}}
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">{{isEditMode ? 'Update' : 'Create'}} 
     </button>
 </div>
 

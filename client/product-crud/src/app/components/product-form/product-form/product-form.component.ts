@@ -1,0 +1,57 @@
+import { Component, OnInit } from '@angular/core';
+import { Product } from '../../../models/product.model';
+import { ProductService } from '../../../services/product.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
+@Component({
+  selector: 'app-product-form',
+  standalone: true,
+  imports: [],
+  templateUrl: './product-form.component.html',
+  styleUrl: './product-form.component.css'
+})
+export class ProductFormComponent implements OnInit {
+  product: Product = {
+    id: 0,
+    name: '',
+    description: '',
+    price: 0
+  }
+  isEditMode = false
+
+  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router){
+  }
+  
+  ngOnInit(): void {
+    const id = this.route.snapshot.params['id']
+    if(id){
+      this.isEditMode = true
+      this.productService.get(id).subscribe({
+        next: (data) => {
+          this.product = data
+        },
+        error: (e) => console.error(e)
+      })
+    }
+   }
+
+   onSubmit():void{
+    if(this.isEditMode){
+this.productService.update(this.product.id!, this.product).subscribe({
+  next: () => {
+    this.router.navigate(['/products'])
+  }, 
+  error: (e) => console.error(e)
+})
+    } else{
+      this.productService.create(this.product).subscribe({
+        next: () => {
+          this.router.navigate(['/products'])
+        },
+        error: (e) => console.error(e)
+      })
+    }
+   }
+
+
+}

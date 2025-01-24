@@ -23,6 +23,16 @@
 </thead>
 <tbody class="bg-white divide-y divide-gray-200">
     <tr *ngFor="let product of products" class="hover:bg-gray-50">
+      <td class="px-6 py-4 whitespace-nowrap">
+        <img *ngIf="product.image" 
+             [src]="product.image" 
+             alt="Product image"
+             class="h-16 w-16 object-cover rounded">
+        <div *ngIf="!product.image" 
+             class="h-16 w-16 bg-gray-100 rounded flex items-center justify-center">
+          <span class="text-gray-400">No image</span>
+        </div>
+      </td>
 <td class="px-6 py-4 whitespace-nowrap">{{product.name}}</td>
 <td class="px-6 py-4">{{product.description}}</td>
 <td class="px-6 py-4">{{product.price | currency}}</td>
